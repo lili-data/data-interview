@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  database:
+    image: postgres:14.4-alpine
+    ports:
+      - 5432:5432
+    env_file:
+     - .env # The name of your environment file (the one at the repository root)
+
+    #volumes:
+      # In this example, we share the folder `db-data` in our root repository, with the default PostgreSQL data path.
+      # It means that every time the repository is modifying the data inside
+      # of `/var/lib/postgresql/data/`, automatically the change will appear in `db-data`.
+      # You don't need to create the `db-data` folder. Docker Compose will do it for you.
+      #- ./db-data/:/var/lib/postgresql/data/
+
+  development:
+    image: lgo-data/development-environment
+    depends_on:
+      - database
+    build:
+      dockerfile: Dockerfile
+    command: tail -F anything # Just to keep the container running
+    volumes:
+      - ./sources:/opt/sources/
+      - ./transformations:/opt/transformations/
+      - ./.env:/opt/.env
