@@ -16,13 +16,13 @@ services:
       #- ./db-data/:/var/lib/postgresql/data/
 
   development:
-    image: lgo-data/development-environment
     depends_on:
       - database
     build:
       dockerfile: Dockerfile
     command: tail -F anything # Just to keep the container running
     volumes:
-      - ./sources:/opt/sources/
-      - ./transformations:/opt/transformations/
-      - ./.env:/opt/.env
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:

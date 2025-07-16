@@ -1,40 +1,101 @@
-### Liligo's Data Team technical interview
 
-## Task
+## ✨ Interview Assignment: Data Engineering Case – Travel Search Analytics
 
-You are working as a Data Professional for a travel company. The marketing department are very interested in analyzing popular routes, destinations and all kinds of information about customer preferences. You managed to get some data extracts from the company website's search engine. 
-The data extracts you have:
-- search logs  - /sources/search_records.csv)
-- airport attributes - /sources/stations.json
-- city attributes - /sources/cities.csv
+### ⏱️ **Estimated Duration:** 1.5 hours
 
-Your task is to create a dimensional star-schema model that best suits the current and expected future needs of the marketing department. Implement the data model into the Postgres DB and fill with data.
+## 🧩 Business Context
 
-## Guidelines
-1. Build you development environment based on the detailed description below.
-2. Check the available source files.
-3. Plan your process in ca. 5-10 steps. In case you fear that you can not implement all the project within the available timeframe, try to design an MVP (Minimum Viable Product) scope and push all other tasks in a future phase2 scope.
-4. Discuss your project plan with your team leader and agree on a viable timeline and scope. 
-5. Start working on the steps. Any codes, intermediary files etc. should be put in the /transformation folder. You can set up your own folder structure here. 
-6. You are free to ask any help any time from your imaginary colleagues and manager. (Your interviewer will act on behalf any roles you have questions to.)
-7. You are free to use any programs, packages, frameworks, methodology or other tool you are familiar with. Note, that the aim is not to come up with as many exotic tools as possible. Use only those ones you are familiar with and that really helps. A basic python + sql based solution is more than enough.
-8. Share your solution (code) to your manager. Share the issues, bottlenecks you faced with and that hindered you to give the optimal solution. Also raise your ideas how you would further improve your solution in case you had more time/resource/data etc. (Both from business feature and IT point of view)
+You are a Data Professional at a travel company. The **Marketing** department wants to have features like: 
 
+* Popular destinations and routes
+* Seasonal trends and pricing
+* predictive capabilities (e.g., estimate future travel prices, customer interests).
 
-## How to build the environment
-1. In the main folder of DATA-INTERVIEW run the following command: ```docker compose up -d```
-2. Check whether the containers are up and running (there should be 2 containers): ```docker container ls | grep data-interview```
-3. For running the code in the environment, enter: ```docker exec -it data-interview-development-1 bash```
+You managed to obtain a few data extracts from the company’s search engine.
 
-+1 You can check the PostgreSQL DB connection: ```psql -h database -p 5432 -U interview -d interview``` (pw: interview1357). To exit psql enter ```\q```.
+---
 
-In the environment all the necessary files can be found under /opt/ folder.
-To exit the container enter ```exit```.
+## 📦 Provided Data Sources
 
-## Help
-- Some Python packages have already been made available in the environment (check the requirements.txt file), but if you need something that is not there, feel free to install it.
-- Please make sure to have Docker Desktop or other container application to run Docker (The environment was tested with Docker Desktop).
-- When you finished simply destroy the environment by entering: ```docker compose down && docker image rm -f lgo-data/development-environment```
-- It is highly encouraged to use an IDE for building the code. (e.g. VS Code, PyCharm, etc.)
-- It is recommended to use SQL manager tool compatible with PostgreSQL DB. (e.g. DBeaver)
+* `search_records.csv` – anonymized logs of users searching for flights
+* `stations.json` – information about airports
+* `cities.csv` – attributes of cities
+
+You can find these under `/sources/`.
+
+---
+
+## 🛠️ Your Assignment
+
+You are expected to:
+
+1. **Design a dimensional data model** (preferably a star schema) that supports analytical use cases for the marketing department.
+2. **Implement the model in PostgreSQL** and load it with sample data from the sources provided.
+3. **Build a simple prototype of a prediction model** that estimates **future prices** based on available search history.
+4. **Refactor your codebase** and build an ETL module that would load new records from the same sources each day. 
+
+---
+
+⚠️ **Note:** The scope of the task is intentionally broader than what can be done in 1.5 hours. You are encouraged to:
+
+* Prioritize and **scope your own MVP**
+* You are allowed to cut the scope and implement only a portion of it
+* You should judge what you are capable to deliver within the available time 
+* Feel free to **use AI tools**, search online, or delegate tasks accordingly
+* Ask your **interviewer for clarification or context** — proactivity is valued
+
+---
+
+## 🧠 What We’re Evaluating
+
+* **Your mindset, analytical skills, and ability to define scope**
+* Your **data modeling abilities**
+* **Communication and proactivity**: How you ask for missing context
+* **Prioritization and critical thinking** under time constraints
+* **Creativity and practicality** in building a predictive model
+
+> This is not a coding test. AI tools can help with syntax — we’re more interested in **how you think** and **how you approach ambiguity**.
+
+---
+
+## 🧭 Guidelines
+
+1. Check the files in `/sources/`.
+2. Plan your steps: what you aim to deliver
+3. Discuss your plan and priorities with the interviewer before starting.
+4. Create your own folder structure inside `/transformation/` (code, notes, etc.).
+5. Implement your MVP
+6. Submit your solution and describe:
+
+   * What you completed
+   * What’s missing and why
+   * What you’d improve with more time/resources
+
+---
+
+## 🧪 Environment Setup
+
+1. Open the project in VS Code
+
+2. Use **DevContainer**: bottom-left corner → "Reopen in Container"
+
+3. PostgreSQL is already set up and accessible:
+
+   ```bash
+   psql -h database -p 5432 -U interview -d interview
+   # password: interview1357
+   ```
+
+4. Feel free to modify `requirements.txt` and rebuild if you need other packages.
+
+---
+
+## 🧠 Tips & Encouragement
+
+* You **can and should ask questions** to your imaginary manager/colleagues (the interviewer will act on their behalf).
+* Feel free to **use ChatGPT, Copilot, etc.** where it helps speed you up.
+* Clarity of thought and **structured problem-solving** matter more than “perfect” code.
+* It’s okay to **cut scope** – just explain your reasoning.
+
+---
 
